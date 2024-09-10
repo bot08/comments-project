@@ -1,0 +1,11 @@
+{
+  "base": {
+    "sitename": "SiteName"
+  },
+  "index": {
+    "welcome": "Welcome",
+    "current_num": "Number value: ",
+    "locales": "Select Locale:"
+  }
+}
+

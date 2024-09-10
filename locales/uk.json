@@ -1,0 +1,10 @@
+{
+  "base": {
+    "sitename": "Ім'яСайту"
+  },
+  "index": {
+    "welcome": "Ласкаво просимо",
+    "current_num": "значення Number: ",
+    "locales": "Вибір локалізації:"
+  }
+}

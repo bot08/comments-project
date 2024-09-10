@@ -1,0 +1,10 @@
+{
+  "base": {
+    "sitename": "サイト名"
+  },
+  "index": {
+    "welcome": "ようこそ",
+    "current_num": "数値: ",
+    "locales": "ロケールを選択:"
+  }
+}

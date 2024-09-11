@@ -2,11 +2,11 @@
 import mongoose, { Document, Model, Schema } from 'mongoose';
 
 export interface IComment extends Document {
-  user_id: mongoose.Schema.Types.ObjectId;
+  _id: mongoose.Schema.Types.ObjectId;
   name: string;
   comment: string;
   rating?: number;
-  parent_id?: mongoose.Schema.Types.ObjectId;
+  tree?: string;
   site_code: string;
   created_at: Date;
 }

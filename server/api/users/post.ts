@@ -2,7 +2,7 @@
 import connectToDatabase from '~/server/utils/db';
 import User, { IUser } from '~/server/models/User';
 import bcrypt from 'bcrypt';
-import mongoose from 'mongoose'; // Импортируем mongoose для работы с ObjectId
+import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 import { H3Event, defineEventHandler, readBody, createError } from 'h3';
 
@@ -15,7 +15,6 @@ const generateAuthToken = (user: IUser): string => {
 };
 
 export default defineEventHandler(async (event: H3Event) => {
-  // Подключение к базе данных
   await connectToDatabase();
 
   // Чтение тела запроса
@@ -32,12 +31,10 @@ export default defineEventHandler(async (event: H3Event) => {
     throw createError({ statusCode: 400, message: 'User already exists.' });
   }
 
-  // Хеширование пароля
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  // Создание нового пользователя
   const user = new User({
-    _id: new mongoose.Types.ObjectId(), // Используем mongoose.Types.ObjectId()
+    _id: new mongoose.Types.ObjectId(),
     name,
     email,
     password: hashedPassword,
@@ -45,10 +42,8 @@ export default defineEventHandler(async (event: H3Event) => {
     auth_token: '', // Временно пустое значение токена
   });
 
-  // Генерация и сохранение токена авторизации
   user.auth_token = generateAuthToken(user);
 
-  // Сохранение пользователя в базе данных
   await user.save();
 
   return { message: 'User created successfully' };

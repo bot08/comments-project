@@ -29,7 +29,7 @@ async function registerUser() {
     },
     body: JSON.stringify({
       name: 'Test',
-      email: '1@example.com',
+      email: '123@example.com',
       password: 'password123',
       site_code: '123123',
     }),
@@ -51,7 +51,7 @@ async function loginUser() {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      email: '1@example.com',
+      email: '123@example.com',
       password: 'password123',
     }),
   });
@@ -66,10 +66,11 @@ async function loginUser() {
 }
 
 async function updateUser() {
-  const response = await fetch('/api/users/login', {
-    method: 'UPDATE',
+  const response = await fetch('/api/users/update', {
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
+      'Authorization': `${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmUwOWRjNzk2ZmQ1ZTk2MGM2Nzc1NmYiLCJyb2xlIjoidXNlciIsImlhdCI6MTcyNTk5NzE4MCwiZXhwIjoxNzI2MDgzNTgwfQ.1ddR-dNBSmmzlYx_oW3LS_klJ_04frTntGK1AQNl89k'}`
     },
     body: JSON.stringify({
       name: 'Test222',

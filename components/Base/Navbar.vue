@@ -39,29 +39,31 @@
 
 
 <script setup>
+// fix theme (dev only)
 import { ComputerDesktopIcon, SunIcon, MoonIcon, HomeIcon, HomeModernIcon } from '@heroicons/vue/24/solid'
 
 const navigation = [
-  { name: 'Index', href: '/', icon: HomeIcon },
-  { name: 'page2', href: '/page2', icon: HomeModernIcon },
+  { name: 'Home', href: '/', icon: HomeIcon },
+  { name: 'page2 (TESTPAGE)', href: '/page2', icon: HomeModernIcon },
+  { name: 'Docs', href: '/', icon: HomeIcon },
   // test 1 open
   [
     { name: 'Index', href: '/', icon: HomeIcon },
     { name: 'page2', href: '/page2', icon: HomeModernIcon },
   ],
   // goofy test
-  [
-    { name: 'Index))', href: '/', icon: HomeIcon },
-    { name: 'SPINS !', href: '/page2', icon: HomeModernIcon },
-    [
-      { name: 'Why a?', href: '/', icon: HomeIcon },
-      { name: 'B??????', href: '/page2', icon: HomeModernIcon },
-      [
-        { name: 'asdasdsa?', href: '/', icon: HomeIcon },
-        { name: 'aaaasasss!', href: '/page2', icon: HomeModernIcon },
-      ]
-    ]
-  ]
+  // [
+  //   { name: 'Index))', href: '/', icon: HomeIcon },
+  //   { name: 'SPINS !', href: '/page2', icon: HomeModernIcon },
+  //   [
+  //     { name: 'Why a?', href: '/', icon: HomeIcon },
+  //     { name: 'B??????', href: '/page2', icon: HomeModernIcon },
+  //     [
+  //       { name: 'asdasdsa?', href: '/', icon: HomeIcon },
+  //       { name: 'aaaasasss!', href: '/page2', icon: HomeModernIcon },
+  //     ]
+  //   ]
+  // ]
 ]
 
 const hydrated = ref(false);

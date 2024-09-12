@@ -1,7 +1,7 @@
 <template>
   <div ref="langContainer" class="relative">
     <BaseVisualFeedback>
-      <button @click="isOpen = !isOpen" class="hidden md:flex items-center">
+      <button @click="toggleOpen" class="hidden md:flex items-center">
         <LanguageIcon class="w-6 h-6 mr-2"/>
         <BaseMediumText>Lang switch</BaseMediumText>
       </button>
@@ -35,9 +35,15 @@ const languages = ref([
   { code: 'ja', name: '日本語' }
 ])
 
+const toggleOpen = () => {
+  isOpen.value = !isOpen.value;
+  useBlurStore().updBlur(isOpen.value);
+}
+
 const handleClickOutside = (event) => {
-  if (langContainer.value && !langContainer.value.contains(event.target)) {
-    isOpen.value = false
+  if (langContainer.value && !langContainer.value.contains(event.target) && isOpen.value) {
+    isOpen.value = false;
+    useBlurStore().updBlur(false);
   }
 }
 

@@ -6,7 +6,7 @@
     </BaseVisualFeedback>
   </NuxtLink>
   <div v-else ref="linkContainer" class="relative">
-    <button @click="isOpen = !isOpen">
+    <button @click="toggleOpen">
       <BaseVisualFeedback class="flex items-center">
         <ChevronDownIcon :class="'w-6 h-6 mr-2 transition-transform ' + (isOpen && 'rotate-180')"/>
         <BaseMediumText>More</BaseMediumText>
@@ -39,9 +39,15 @@ defineProps({
   }
 })
 
+const toggleOpen = () => {
+  isOpen.value = !isOpen.value;
+  useBlurStore().updBlur(isOpen.value);
+}
+
 const handleClickOutside = (event) => {
-  if (linkContainer.value && !linkContainer.value.contains(event.target)) {
-    isOpen.value = false
+  if (linkContainer.value && !linkContainer.value.contains(event.target) && isOpen.value) {
+    isOpen.value = false;
+    useBlurStore().updBlur(false);
   }
 }
 

@@ -28,5 +28,6 @@ export const generateToken = (user: IUser, opts?: jwt.SignOptions): string => {
  * @returns {{ userId: string }} The contents of the token.
  */
 export const parseToken = (token: string) => {
+    // TODO: Handle error. (https://github.com/auth0/node-jsonwebtoken?tab=readme-ov-file#jwtverifytoken-secretorpublickey-options-callback)
     return jwt.verify(token, runtimeConfig.jwtSecret) as { userId: string };
 }

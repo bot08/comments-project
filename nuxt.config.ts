@@ -8,6 +8,11 @@ export default defineNuxtConfig({
     transpile: ['@heroicons/vue']
   },
 
+  runtimeConfig: {
+    mongodbUri: '<mongodb_uri>',
+    jwtSecret: '<jwt_secret>',
+  },
+
   vite:{
     build: {
       target: 'es2022',

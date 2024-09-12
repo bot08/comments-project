@@ -1,4 +1,4 @@
-// server/api/comments/post.ts
+// server/api/comments/register.ts
 import connectToDatabase from '~/server/utils/db';
 import Comment, { IComment } from '~/server/models/Comment';
 import { H3Event } from 'h3';

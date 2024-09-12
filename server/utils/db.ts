@@ -1,30 +1,18 @@
-// server/utils/db.ts
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI || 'your-mongodb-atlas-connection-uri';
+const runtimeConfig = useRuntimeConfig();
 
-let cached = (global as any).mongoose;
+let connection: mongoose.Mongoose | null = null
 
-if (!cached) {
-  cached = (global as any).mongoose = { conn: null, promise: null };
-}
+async function connectToDatabase(): Promise<mongoose.Mongoose> {
+    if (connection) {
+        return connection
+    }
 
-async function connectToDatabase(): Promise<typeof mongoose> {
-  if (cached.conn) {
-    return cached.conn;
-  }
+    // TODO: Handle connection error.
+    connection = await mongoose.connect(runtimeConfig.mongodbUri)
 
-  if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }).then((mongoose) => {
-      return mongoose;
-    });
-  }
-
-  cached.conn = await cached.promise;
-  return cached.conn;
+    return connection!;
 }
 
 export default connectToDatabase;

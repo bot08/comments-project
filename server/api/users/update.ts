@@ -1,24 +1,23 @@
 // server/api/users/update.ts
 import connectToDatabase from '~/server/utils/db';
-import User from '~/server/models/User';
+import {User} from '~/server/models/User';
 import { H3Event, defineEventHandler, readBody, createError } from 'h3';
-import jwt from 'jsonwebtoken';
+import {parseToken} from "~/server/utils/token";
 
 export default defineEventHandler(async (event: H3Event) => {
   await connectToDatabase();
 
-  const authHeader = event.req.headers.authorization;
+  const authHeader = event.headers.get('Authorization');
   if (!authHeader) {
     throw createError({ statusCode: 401, message: 'Authorization header is missing.' });
   }
 
   const token = authHeader.split(' ')[1];
-  let decoded;
-  try {
-    decoded = jwt.verify(token, process.env.JWT_SECRET || 'your_jwt_secret');
-  } catch (error) {
-    throw createError({ statusCode: 401, message: 'Invalid token.' });
+  if (!token) {
+    throw createError({ statusCode: 401, message: 'Token is missing.' });
   }
+
+  const decoded = parseToken(token);
 
   const { name, email, site_code, isActive, role } = await readBody(event);
 

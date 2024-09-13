@@ -16,11 +16,17 @@
     <BaseVisualFeedback>
       <button @click="updateUser()">TEST UPD</button>
     </BaseVisualFeedback>
+    <BaseVisualFeedback>
+      <button @click="meUser()">TEST profile</button>
+    </BaseVisualFeedback>
   </BaseCard>
 </template>
 
 
 <script setup>
+
+const authToken = ref('');
+
 async function registerUser() {
   const response = await fetch('/api/auth/register', {
     method: 'POST',
@@ -62,15 +68,23 @@ async function loginUser() {
   }
 
   const data = await response.json();
+
+  authToken.value = data.data.access_token ?? '';
+
   console.log('0:', data);
 }
 
 async function updateUser() {
+  if (!authToken.value) {
+    console.error('No token');
+    return;
+  }
+
   const response = await fetch('/api/users/update', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `${'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmUwOWRjNzk2ZmQ1ZTk2MGM2Nzc1NmYiLCJyb2xlIjoidXNlciIsImlhdCI6MTcyNTk5NzE4MCwiZXhwIjoxNzI2MDgzNTgwfQ.1ddR-dNBSmmzlYx_oW3LS_klJ_04frTntGK1AQNl89k'}`
+      'Authorization': `Bearer ${authToken.value}`,
     },
     body: JSON.stringify({
       name: 'Test222',
@@ -85,4 +99,28 @@ async function updateUser() {
   const data = await response.json();
   console.log('0:', data);
 }
+
+async function meUser() {
+  if (!authToken.value) {
+    console.error('No token');
+    return;
+  }
+
+  const response = await fetch('/api/users/me', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${authToken.value}`,
+    },
+  });
+
+  if (!response.ok) {
+    console.error('1:', await response.json());
+    return;
+  }
+
+  const data = await response.json();
+  console.log('0:', data);
+}
+
 </script>

@@ -1,4 +1,4 @@
-import connectToDatabase from '~/server/utils/db';
+import {connectToDatabase} from '~/server/utils/db';
 import { User } from '~/server/models/User';
 import bcrypt from 'bcrypt';
 import { H3Event, defineEventHandler, readValidatedBody, createError } from 'h3';

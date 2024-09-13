@@ -1,5 +1,6 @@
-import {IUser} from "~/server/models/User";
+import {IUser, User} from "~/server/models/User";
 import jwt from "jsonwebtoken";
+import {createError} from "h3";
 
 const runtimeConfig = useRuntimeConfig();
 
@@ -28,6 +29,36 @@ export const generateToken = (user: IUser, opts?: jwt.SignOptions): string => {
  * @returns {{ userId: string }} The contents of the token.
  */
 export const parseToken = (token: string) => {
-    // TODO: Handle error. (https://github.com/auth0/node-jsonwebtoken?tab=readme-ov-file#jwtverifytoken-secretorpublickey-options-callback)
-    return jwt.verify(token, runtimeConfig.jwtSecret) as { userId: string };
+    try {
+        return jwt.verify(token, runtimeConfig.jwtSecret) as { userId: string };
+    } catch (err) {
+        // Errors: https://github.com/auth0/node-jsonwebtoken?tab=readme-ov-file#errors--codes
+
+        throw createError({
+            statusCode: 401,
+            message: 'Invalid token.',
+        });
+    }
+}
+
+export const authorize = async (headers: Headers): Promise<IUser> => {
+    const authHeader = headers.get('Authorization');
+    if (!authHeader) {
+        throw createError({ statusCode: 401, message: 'Authorization header is missing.' });
+    }
+
+    const token = authHeader.replace('Bearer ', '');
+    if (!token) {
+        throw createError({ statusCode: 403, message: 'Forbidden.' });
+    }
+
+    const decoded = parseToken(token);
+
+    const user = await User.findById(decoded.userId);
+
+    if (!user) {
+        throw createError({ statusCode: 403, message: 'Forbidden.' });
+    }
+
+    return user;
 }

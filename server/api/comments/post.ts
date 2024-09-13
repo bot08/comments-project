@@ -1,5 +1,4 @@
-// server/api/comments/register.ts
-import connectToDatabase from '~/server/utils/db';
+import {connectToDatabase} from '~/server/utils/db';
 import Comment, { IComment } from '~/server/models/Comment';
 import { H3Event } from 'h3';
 import mongoose from 'mongoose';

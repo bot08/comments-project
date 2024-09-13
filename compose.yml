@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  mongo:
+    image: mongo:7.0.14
+    ports:
+      - "127.0.0.1:27017:27017"
+    volumes:
+      - mongo:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: comments
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: QWEasd123
+
+volumes:
+  mongo:

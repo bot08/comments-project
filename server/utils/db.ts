@@ -1,30 +1,26 @@
-// server/utils/db.ts
+// Source: https://mongoosejs.com/docs/lambda.html#using-code%3Emongoose.connect()%3C/code%3E
+
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI || 'your-mongodb-atlas-connection-uri';
+const runtimeConfig = useRuntimeConfig();
 
-let cached = (global as any).mongoose;
+let connection: mongoose.Mongoose | null = null
 
-if (!cached) {
-  cached = (global as any).mongoose = { conn: null, promise: null };
+export async function connectToDatabase(): Promise<mongoose.Mongoose> {
+    if (connection) {
+        return connection
+    }
+
+    try {
+        connection = await mongoose.connect(runtimeConfig.mongodbUri)
+    } catch (err) {
+        console.error(err)
+
+        throw createError({
+            statusCode: 500,
+            message: 'Database connection failed.',
+        })
+    }
+
+    return connection!;
 }
-
-async function connectToDatabase(): Promise<typeof mongoose> {
-  if (cached.conn) {
-    return cached.conn;
-  }
-
-  if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }).then((mongoose) => {
-      return mongoose;
-    });
-  }
-
-  cached.conn = await cached.promise;
-  return cached.conn;
-}
-
-export default connectToDatabase;

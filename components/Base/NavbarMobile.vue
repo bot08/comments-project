@@ -1,6 +1,6 @@
 <template>
   <div ref="container" class="relative">
-    <button @click="isOpen = !isOpen" class="block md:hidden">
+    <button @click="toggleOpen" class="block md:hidden">
       <BaseVisualFeedback>
         <Bars4Icon class="h-8 w-8"/>
       </BaseVisualFeedback>
@@ -34,9 +34,15 @@ defineProps({
   }
 })
 
+const toggleOpen = () => {
+  isOpen.value = !isOpen.value;
+  useBlurStore().updBlur(isOpen.value);
+}
+
 const handleClickOutside = (event) => {
-  if (container.value && !container.value.contains(event.target)) {
-    isOpen.value = false
+  if (container.value && !container.value.contains(event.target) && isOpen.value) {
+    isOpen.value = false;
+    useBlurStore().updBlur(false);
   }
 }
 

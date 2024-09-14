@@ -11,6 +11,7 @@ export default defineEventHandler(async (event: H3Event) => {
     // Return user.
     return {
         data: {
+            _id: user._id,
             name: user.name,
             email: user.email,
             isActive: user.isActive,

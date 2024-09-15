@@ -5,7 +5,6 @@ export interface IUser extends Document {
   name: string;
   email: string;
   password: string;
-  site_code: string;
   role: 'moderator' | 'owner' | 'admin';
   isActive: boolean;
 }
@@ -21,10 +20,6 @@ const UserSchema: Schema = new Schema({
     unique: true,
   },
   password: {
-    type: String,
-    required: true,
-  },
-  site_code: {
     type: String,
     required: true,
   },

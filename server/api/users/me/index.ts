@@ -1,6 +1,6 @@
-import { connectToDatabase } from '~/server/utils/db';
-import { H3Event, defineEventHandler } from 'h3';
-import { authorize } from "~/server/utils/token";
+import {connectToDatabase} from '~/server/utils/db';
+import {H3Event, defineEventHandler} from 'h3';
+import {authorize} from "~/server/utils/token";
 
 export default defineEventHandler(async (event: H3Event) => {
     await connectToDatabase();

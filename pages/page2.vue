@@ -37,7 +37,6 @@ async function registerUser() {
       name: 'Test',
       email: '123@example.com',
       password: 'password123',
-      site_code: '123123',
     }),
   });
 

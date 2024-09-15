@@ -1,6 +1,6 @@
-import { connectToDatabase } from '~/server/utils/db';
-import { H3Event, defineEventHandler, createError } from 'h3';
-import { authorize } from "~/server/utils/token";
+import {connectToDatabase} from '~/server/utils/db';
+import {H3Event, defineEventHandler, createError} from 'h3';
+import {authorize} from "~/server/utils/token";
 
 import {User} from "~/server/models/User";
 import {getPaginate} from "~/server/utils/paginate";

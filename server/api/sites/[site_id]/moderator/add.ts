@@ -1,9 +1,8 @@
 import {connectToDatabase} from '~/server/utils/db';
 import {H3Event, defineEventHandler, readValidatedBody, createError} from 'h3';
 import {authorize} from "~/server/utils/token";
-import {AddModeratorSchema, CreateSiteSchema} from "~/server/validator/sites";
+import {AddModeratorSchema} from "~/server/validator/sites";
 import {Site} from "~/server/models/Site";
-import mongoose from "mongoose";
 
 export default defineEventHandler(async (event: H3Event) => {
     await connectToDatabase();

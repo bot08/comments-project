@@ -44,11 +44,13 @@ import { ComputerDesktopIcon, SunIcon, MoonIcon, HomeIcon, HomeModernIcon } from
 
 const navigation = [
   { name: 'Home', href: '/', icon: HomeIcon },
-  { name: 'page2 (TESTPAGE)', href: '/page2', icon: HomeModernIcon },
   { name: 'Docs', href: '/', icon: HomeIcon },
+  { name: 'Login', href: '/login', icon: HomeIcon },
+  { name: 'Register', href: '/register', icon: HomeIcon },
+  { name: 'User', href: '/user', icon: HomeIcon },
   // test 1 open
   [
-    { name: 'Index', href: '/', icon: HomeIcon },
+    { name: 'User', href: '/user', icon: HomeIcon },
     { name: 'page2', href: '/page2', icon: HomeModernIcon },
   ],
   // goofy test

@@ -25,8 +25,9 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/color-mode',
-    '@pinia/nuxt', 
+    '@pinia/nuxt',
     "@nuxtjs/i18n",
+    '@nuxt/image'
   ],
 
   css: [

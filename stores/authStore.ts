@@ -1,3 +1,5 @@
+import { setCookie, getCookie, removeCookie } from './utils/cookie'
+
 export const useAuthStore = defineStore({
   id: 'authStore',
   state: () => ({
@@ -13,6 +15,7 @@ export const useAuthStore = defineStore({
       })
       .then((res) => {  
         this.token = res.data.access_token;
+        setCookie('token', this.token, 21);
         return res;
       })
       .catch(err => {
@@ -43,6 +46,7 @@ export const useAuthStore = defineStore({
       })
       .then((res) => {
         this.user = res.data;
+        setCookie('user', JSON.stringify(this.user), 21);
       })
       .catch(err => {
         console.error('Failed to fetch user:', err);
@@ -53,6 +57,23 @@ export const useAuthStore = defineStore({
     logout() {
       this.user = null
       this.token = null
+      removeCookie('user')
+      removeCookie('token')
+    },
+
+    initializeStore() {
+      // todo: server cookie check
+      if(import.meta.server) return;
+
+      const token = getCookie('token')
+      const user = getCookie('user')
+
+      if (token) {
+        this.token = token
+      }
+      if (user) {
+        this.user = JSON.parse(user)
+      }
     }
   },
 

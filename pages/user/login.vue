@@ -1,14 +1,9 @@
 <template>
   <BaseCard>
     <div class="p-4">
-      <BaseBigText>Reg</BaseBigText>
+      <BaseBigText>Login</BaseBigText>
       
-      <form @submit.prevent="handleRegister">
-        <div>
-          <label for="name">Name:</label>
-          <input v-model="name" type="text" id="name" required />
-        </div>
-
+      <form @submit.prevent="handleLogin">
         <div>
           <label for="email">Email:</label>
           <input v-model="email" type="email" id="email" required />
@@ -19,7 +14,7 @@
           <input v-model="password" type="password" id="password" required />
         </div>
 
-        <button type="submit">Register</button>
+        <button type="submit">Login</button>
       </form>
     </div>
   </BaseCard>
@@ -27,13 +22,19 @@
 
 
 <script setup>
-const name = ref('')
+definePageMeta({
+  middleware: 'guests-only'
+})
+
 const email = ref('')
 const password = ref('')
 const authStore = useAuthStore()
+const localePath = useLocalePath()
 
-const handleRegister = async () => {
-  const response = await authStore.register(name.value, email.value, password.value)
-  console.log('Registered successfully:', response)
+const handleLogin = () => {
+  authStore.login(email.value, password.value)
+  .then(res => {
+    navigateTo(localePath('/user'))
+  })
 }
 </script>

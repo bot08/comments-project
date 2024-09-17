@@ -28,4 +28,6 @@ useHead({
     { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' }
   ]
 })
+
+useAuthStore().initializeStore()
 </script>

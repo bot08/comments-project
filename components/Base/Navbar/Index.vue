@@ -19,13 +19,15 @@
         <div class="flex items-center space-x-4">
           <!-- Theme -->
           <button @click="changeTheme()" class="w-6 h-6">
-            <Transition appear enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 scale-75">
-              <BaseVisualFeedback v-if="hydrated && $colorMode.preference">
-                <ComputerDesktopIcon v-if="$colorMode.preference === 'system'" class="h-6 w-6"/>
-                <SunIcon v-if="$colorMode.preference === 'light'" class="h-6 w-6"/>
-                <MoonIcon v-if="$colorMode.preference === 'dark'" class="h-6 w-6"/>
-              </BaseVisualFeedback>
-            </Transition>
+            <ClientOnly fallbackTag="div">
+              <Transition appear enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 scale-75">
+                <BaseVisualFeedback>
+                  <ComputerDesktopIcon v-if="$colorMode.preference === 'system'" class="h-6 w-6"/>
+                  <SunIcon v-if="$colorMode.preference === 'light'" class="h-6 w-6"/>
+                  <MoonIcon v-if="$colorMode.preference === 'dark'" class="h-6 w-6"/>
+                </BaseVisualFeedback>
+              </Transition>
+            </ClientOnly>
           </button>
           <div>
             <BaseNavbarMobile :items="navigation"/>
@@ -39,20 +41,15 @@
 
 
 <script setup>
-// fix theme (dev only)
-import { ComputerDesktopIcon, SunIcon, MoonIcon, HomeIcon, HomeModernIcon } from '@heroicons/vue/24/solid'
+import { ComputerDesktopIcon, SunIcon, MoonIcon, HomeIcon, BookOpenIcon, RectangleGroupIcon } from '@heroicons/vue/24/solid'
 
 const navigation = [
   { name: 'Home', href: '/', icon: HomeIcon },
-  { name: 'Docs', href: '/', icon: HomeIcon },
-  { name: 'Login', href: '/login', icon: HomeIcon },
-  { name: 'Register', href: '/register', icon: HomeIcon },
+  { name: 'Docs', href: '/docs', icon: BookOpenIcon },
+  { name: 'Widget', href: '/widget', icon: RectangleGroupIcon },
+  { name: 'Login', href: '/user/login', icon: HomeIcon },
+  { name: 'Register', href: '/user/register', icon: HomeIcon },
   { name: 'User', href: '/user', icon: HomeIcon },
-  // test 1 open
-  [
-    { name: 'User', href: '/user', icon: HomeIcon },
-    { name: 'page2', href: '/page2', icon: HomeModernIcon },
-  ],
   // goofy test
   // [
   //   { name: 'Index))', href: '/', icon: HomeIcon },
@@ -67,12 +64,6 @@ const navigation = [
   //   ]
   // ]
 ]
-
-const hydrated = ref(false);
-
-onMounted(() => {
-  hydrated.value = true;
-});
 
 function changeTheme() {
   if (useColorMode().preference === 'system') {

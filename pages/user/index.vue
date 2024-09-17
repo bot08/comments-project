@@ -22,7 +22,7 @@
 
 <script setup>
 definePageMeta({
-  middleware: 'auth'
+  middleware: 'auth-only'
 })
 
 const authStore = useAuthStore()
@@ -34,6 +34,6 @@ onMounted(() => {
 
 const logOut = () => {
   authStore.logout()
-  navigateTo(localePath('/login'))
+  navigateTo(localePath('/user/login'))
 }
 </script>

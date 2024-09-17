@@ -62,9 +62,6 @@ export const useAuthStore = defineStore({
     },
 
     initializeStore() {
-      // todo: server cookie check
-      if(import.meta.server) return;
-
       const token = getCookie('token')
       const user = getCookie('user')
 

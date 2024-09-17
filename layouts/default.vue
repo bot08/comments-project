@@ -29,5 +29,4 @@ useHead({
   ]
 })
 
-useAuthStore().initializeStore()
 </script>

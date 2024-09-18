@@ -2,14 +2,14 @@
   <NuxtLink v-if="!Array.isArray(item)" :to="localePath(item.href)">
     <BaseVisualFeedback class="flex items-center">
       <component :is="item.icon" class="w-6 h-6 mr-2"/>
-      <BaseMediumText>{{ item.name }}</BaseMediumText>
+      <BaseTextMedium>{{ item.name }}</BaseTextMedium>
     </BaseVisualFeedback>
   </NuxtLink>
   <div v-else ref="linkContainer" class="relative">
     <button @click="toggleOpen">
       <BaseVisualFeedback class="flex items-center">
         <ChevronDownIcon :class="'w-6 h-6 mr-2 transition-transform ' + (isOpen && 'rotate-180')"/>
-        <BaseMediumText>More</BaseMediumText>
+        <BaseTextMedium>More</BaseTextMedium>
       </BaseVisualFeedback>
     </button>
     <transition

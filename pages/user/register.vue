@@ -1,7 +1,7 @@
 <template>
   <BaseCard>
     <div class="p-4">
-      <BaseBigText>Reg</BaseBigText>
+      <BaseTextBig>Reg</BaseTextBig>
       
       <form @submit.prevent="handleRegister">
         <div>

@@ -7,7 +7,7 @@
           <NuxtLink :to="localePath('/')">
             <BaseVisualFeedback class="flex items-center space-x-4">
             <img class="h-8 w-8" src="/favicon.ico" alt="logo"/>
-            <BaseMediumText>{{ $t('base.sitename') }}</BaseMediumText>
+            <BaseTextMedium>{{ $t('base.sitename') }}</BaseTextMedium>
             </BaseVisualFeedback>
           </NuxtLink>
         </div>
@@ -47,9 +47,7 @@ const navigation = [
   { name: 'Home', href: '/', icon: HomeIcon },
   { name: 'Docs', href: '/docs', icon: BookOpenIcon },
   { name: 'Widget', href: '/widget', icon: RectangleGroupIcon },
-  { name: 'Login', href: '/user/login', icon: HomeIcon },
-  { name: 'Register', href: '/user/register', icon: HomeIcon },
-  { name: 'User', href: '/user', icon: HomeIcon },
+  { name: 'User(test)', href: '/user', icon: RectangleGroupIcon },
   // goofy test
   // [
   //   { name: 'Index))', href: '/', icon: HomeIcon },

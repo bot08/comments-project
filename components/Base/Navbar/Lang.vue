@@ -3,7 +3,7 @@
     <BaseVisualFeedback>
       <button @click="toggleOpen" class="hidden md:flex items-center">
         <LanguageIcon class="w-6 h-6 mr-2"/>
-        <BaseMediumText>Lang switch</BaseMediumText>
+        <BaseTextMedium>Lang switch</BaseTextMedium>
       </button>
     </BaseVisualFeedback>
     <transition

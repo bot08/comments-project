@@ -1,7 +1,7 @@
 <template>
   <BaseCard>
     <div class="p-4">
-      <BaseBigText>User page test</BaseBigText>
+      <BaseTextBig>User page test</BaseTextBig>
       
       <div v-if="authStore.user">
         <h1>User Profile</h1>
@@ -30,6 +30,9 @@ const localePath = useLocalePath()
 
 onMounted(() => {
   authStore.fetchUser()
+  .catch(error => {
+    logOut();
+  });
 })
 
 const logOut = () => {

@@ -11,11 +11,19 @@
 const route = useRoute()
 const { t, locale } = useI18n()
 
+useSeoMeta({
+  //title: 'My Amazing Site',
+  //ogTitle: 'My Amazing Site',
+  //description: 'This is my amazing site, let me tell you all about it.',
+  //ogDescription: 'This is my amazing site, let me tell you all about it.',
+  //ogImage: 'https://example.com/image.png',
+  //twitterCard: 'summary_large_image',
+})
+
 useHead({
   titleTemplate: (title) => `${title} - ${t('base.sitename')}`,
   title: () => route.meta.title,
   meta: [
-    { name: 'description', content: route.meta.description },
     { name: 'theme-color', content: import.meta.client ? (() => useColorMode().value != 'dark' ? '#fff' : '#3f3f46') : '' }
   ],
   htmlAttrs: {

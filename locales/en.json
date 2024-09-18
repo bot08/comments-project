@@ -2,10 +2,13 @@
   "base": {
     "sitename": "SiteName"
   },
-  "index": {
-    "welcome": "Welcome",
-    "current_num": "Number value: ",
-    "locales": "Select Locale:"
+  "pages": {
+    "index": {
+      "title": "Free plug and play comments widget",
+      "description": "TODO",
+      "welcomeBigText": "Add a comments or reviews widget to your website — simple and effective!",
+      "welcomeSmallText": "Our comments widget is suitable for CMS and website builder sites. Easily add comments and ratings without worrying about backend and moderation — we'll take care of that."
+    }
   }
 }
 

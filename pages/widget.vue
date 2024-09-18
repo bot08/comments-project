@@ -1,7 +1,7 @@
 <template>
   <BaseCard>
     <div class="p-4">
-      <BaseBigText>Widget</BaseBigText>
+      <BaseTextBig>Widget</BaseTextBig>
 
     </div>   
   </BaseCard>

@@ -1,7 +1,7 @@
 <template>
   <BaseCard>
     <div class="p-4">
-      <BaseBigText>Login</BaseBigText>
+      <BaseTextBig>Login</BaseTextBig>
       
       <form @submit.prevent="handleLogin">
         <div>

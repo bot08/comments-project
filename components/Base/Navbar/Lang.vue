@@ -2,17 +2,16 @@
   <div ref="langContainer" class="relative">
     <BaseVisualFeedback>
       <button @click="toggleOpen" class="hidden md:flex items-center">
-        <LanguageIcon class="w-6 h-6 mr-2"/>
-        <BaseTextMedium>Lang switch</BaseTextMedium>
+        <LanguageIcon class="w-6 h-6"/>
       </button>
     </BaseVisualFeedback>
     <transition
       enter-active-class="transition ease-out duration-250"
-      enter-from-class="opacity-0 scale-75 -translate-y-8 translate-x-2"
+      enter-from-class="opacity-0 scale-75 -translate-y-8"
       leave-active-class="transition ease-out duration-250"
-      leave-to-class="opacity-0 scale-75 -translate-y-8 translate-x-2"
+      leave-to-class="opacity-0 scale-75 -translate-y-8"
     >
-      <div v-if="isOpen" class="absolute right-0 w-40 p-4 mt-8 rounded-2xl shadow-lg bg-white dark:bg-zinc-700">
+      <div v-if="isOpen" class="absolute left-1/2 -translate-x-1/2 w-40 p-4 mt-8 rounded-2xl shadow-lg bg-white dark:bg-zinc-700">
         <BaseVisualFeedback v-for="lang in languages" :key="lang.code">
           <button @click="setLocale(lang.code)" class="block">{{ lang.name }}</button>
         </BaseVisualFeedback>

@@ -1,3 +1,7 @@
 export default defineNuxtPlugin((nuxtApp) => {
-  useAuthStore().initializeStore()
+  const authStore = useAuthStore()
+  authStore.initializeStore()
+  if(import.meta.client) {
+    //authStore.isAuthenticated && authStore.fetchUser()
+  }
 });

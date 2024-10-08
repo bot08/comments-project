@@ -33,6 +33,7 @@
             <BaseNavbarMobile :items="navigation"/>
             <BaseNavbarLang/>
           </div>
+          <BaseNavbarUser/>
         </div>
       </div>
     </div>
@@ -47,7 +48,6 @@ const navigation = [
   { name: 'Home', href: '/', icon: HomeIcon },
   { name: 'Docs', href: '/docs', icon: BookOpenIcon },
   { name: 'Widget', href: '/widget', icon: RectangleGroupIcon },
-  { name: 'User(test)', href: '/user', icon: RectangleGroupIcon },
   // goofy test
   // [
   //   { name: 'Index))', href: '/', icon: HomeIcon },

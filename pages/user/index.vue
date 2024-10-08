@@ -31,12 +31,7 @@ const localePath = useLocalePath()
 onMounted(() => {
   authStore.fetchUser()
   .catch(error => {
-    logOut();
+    navigateTo(localePath('/user/login'))
   });
 })
-
-const logOut = () => {
-  authStore.logout()
-  navigateTo(localePath('/user/login'))
-}
 </script>

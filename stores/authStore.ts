@@ -49,6 +49,7 @@ export const useAuthStore = defineStore({
         setCookie('user', JSON.stringify(this.user), 21);
       })
       .catch(err => {
+        this.logout();
         console.error('Failed to fetch user:', err);
         throw err;
       });

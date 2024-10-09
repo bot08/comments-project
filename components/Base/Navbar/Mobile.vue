@@ -13,7 +13,7 @@
         leave-active-class="transition ease-out duration-250"
         leave-to-class="opacity-0 scale-75 -translate-y-8"
       >
-        <div v-if="isOpen" class="absolute right-0 translate-x-8 origin-top-right w-40 p-4 mt-8 rounded-2xl shadow-lg bg-white dark:bg-zinc-700">
+        <div v-if="isOpen" class="absolute right-0 translate-x-8 origin-top-right w-40 p-4 mt-8 rounded-2xl shadow-lg bg-white dark:bg-neutral-700">
           <BaseNavbarLink v-for="(item, index) in items" :key="index" :item="item"/>
         </div>
       </transition>

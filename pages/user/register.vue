@@ -1,25 +1,29 @@
 <template>
   <BaseCard>
     <div class="p-4">
-      <BaseTextBig>Reg</BaseTextBig>
-      
+      <BaseTextBig>Register</BaseTextBig>
       <form @submit.prevent="handleRegister">
         <div>
           <label for="name">Name:</label>
-          <input v-model="name" type="text" id="name" required />
+          <BaseVisualFeedback :wFull="true">
+            <BaseInput v-model="name" type="text" id="name" required autocomplete="name"/>
+          </BaseVisualFeedback>
         </div>
-
         <div>
           <label for="email">Email:</label>
-          <input v-model="email" type="email" id="email" required />
+          <BaseVisualFeedback :wFull="true">
+            <BaseInput v-model="email" type="email" id="email" required autocomplete="email"/>
+          </BaseVisualFeedback>
         </div>
-
         <div>
           <label for="password">Password:</label>
-          <input v-model="password" type="password" id="password" required />
+          <BaseVisualFeedback :wFull="true">
+            <BaseInput v-model="password" type="password" id="password" required autocomplete="current-password"/>
+          </BaseVisualFeedback>
         </div>
-
-        <button type="submit">Register</button>
+        <BaseVisualFeedback>
+          <BaseButtonNormal type="submit" class="mt-2">Register</BaseButtonNormal>
+        </BaseVisualFeedback>
       </form>
     </div>
   </BaseCard>

@@ -2,15 +2,25 @@
   <BaseCard>
     <div class="p-4">
       <BaseTextBig>User page test</BaseTextBig>
-      
       <div v-if="authStore.user">
-        <h1>User Profile</h1>
-        <p><strong>ID:</strong> {{ authStore.user._id }}</p>
-        <p><strong>Name:</strong> {{ authStore.user.name }}</p>
-        <p><strong>Email:</strong> {{ authStore.user.email }}</p>
-        <p><strong>Active:</strong> {{ authStore.user.isActive ? 'Yes' : 'No' }}</p>
-        <p><strong>Role:</strong> {{ authStore.user.role }}</p>
-        <button @click="logOut">LOG OUT</button>
+        <BaseTextNormal>
+          <strong>ID:</strong> {{ authStore.user._id }}
+        </BaseTextNormal>
+        <BaseTextNormal>
+          <strong>Name:</strong> {{ authStore.user.name }}
+        </BaseTextNormal>
+        <BaseTextNormal>
+          <strong>Email:</strong> {{ authStore.user.email }}
+        </BaseTextNormal>
+        <BaseTextNormal>
+          <strong>Active:</strong> {{ authStore.user.isActive ? 'Yes' : 'No' }}
+        </BaseTextNormal>
+        <BaseTextNormal>
+          <strong>Role:</strong> {{ authStore.user.role }}
+        </BaseTextNormal>
+        <BaseVisualFeedback>
+          <BaseButtonNormal @click="logOut" class="mt-2">Log out</BaseButtonNormal>
+        </BaseVisualFeedback>
       </div>
       <div v-else>
         <p>Loading user information...</p>
@@ -34,4 +44,9 @@ onMounted(() => {
     navigateTo(localePath('/user/login'))
   });
 })
+
+const logOut = () => {
+  authStore.logout()
+  navigateTo(localePath('/user/login'))
+}
 </script>

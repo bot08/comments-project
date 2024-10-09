@@ -9,6 +9,11 @@
       <BaseTextMedium class="my-4 dark:text-white transition-colors">
         {{ $t('pages.index.welcomeSmallText') }}
       </BaseTextMedium>
+      <BaseVisualFeedback class="mx-auto">
+        <NuxtLink :to="localePath('/user/register')">
+          <BaseButtonNormal class="mt-2 mx-auto">Register</BaseButtonNormal>
+        </NuxtLink>
+      </BaseVisualFeedback>
     </div>
   </div>
 </template>

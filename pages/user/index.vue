@@ -46,7 +46,7 @@ onMounted(() => {
 })
 
 const logOut = () => {
-  authStore.logout()
   navigateTo(localePath('/user/login'))
+  authStore.logout()
 }
 </script>

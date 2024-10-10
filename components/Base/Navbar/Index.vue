@@ -33,7 +33,7 @@
             <BaseNavbarMobile :items="navigation"/>
             <BaseNavbarLang/>
           </div>
-          <BaseNavbarUser/>
+          <BaseNavbarUser class="hidden md:block"/>
         </div>
       </div>
     </div>

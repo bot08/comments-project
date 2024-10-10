@@ -15,6 +15,7 @@
       >
         <div v-if="isOpen" class="absolute right-0 translate-x-8 origin-top-right w-40 p-4 mt-8 rounded-2xl shadow-lg bg-white dark:bg-neutral-700">
           <BaseNavbarLink v-for="(item, index) in items" :key="index" :item="item"/>
+          <BaseNavbarUser/>
         </div>
       </transition>
     </div>

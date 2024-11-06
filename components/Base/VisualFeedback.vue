@@ -18,19 +18,25 @@
 <script setup lang="ts">
 // todo: resize & make it more auto
 const slotContainer = ref<null | object>(null)
-const isActive = ref<Boolean>(false)
+const isActive = ref(false)
 const reductionPx: number = 4
 
-const originalWidth = ref<number>(0)
-const originalHeight = ref<number>(0)
+const originalWidth = ref(0)
+const originalHeight = ref(0)
 
 const props = defineProps({
   wFull: Boolean
 })
 
-const computedStyle = computed<object | void>(() => {
+interface computedStyleType {
+  transform: string,
+  transformOrigin: string,
+  transition: string,
+}
+
+const computedStyle = computed<computedStyleType | undefined>(() => {
   if (!originalWidth.value || !originalHeight.value) {
-    return
+    return undefined
   }
 
   const scaleX = isActive.value ? (originalWidth.value - reductionPx) / originalWidth.value : 1

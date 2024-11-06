@@ -15,20 +15,20 @@
 </template>
 
 
-<script setup>
+<script setup lang="ts">
 // todo: resize & make it more auto
-const slotContainer = ref(null)
-const isActive = ref(false)
-const reductionPx = 4
+const slotContainer = ref<null | object>(null)
+const isActive = ref<Boolean>(false)
+const reductionPx: number = 4
 
-const originalWidth = ref(0)
-const originalHeight = ref(0)
+const originalWidth = ref<number>(0)
+const originalHeight = ref<number>(0)
 
 const props = defineProps({
   wFull: Boolean
 })
 
-const computedStyle = computed(() => {
+const computedStyle = computed<object | void>(() => {
   if (!originalWidth.value || !originalHeight.value) {
     return
   }

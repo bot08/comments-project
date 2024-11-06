@@ -21,14 +21,19 @@
 </template>
 
 
-<script setup>
+<script setup lang="ts">
 import { LanguageIcon } from '@heroicons/vue/24/solid'
 const { setLocale } = useI18n()
 
-const isOpen = ref(false)
-const langContainer = ref(null)
+const isOpen = ref<boolean>(false)
+const langContainer = ref<null | object>(null)
 
-const languages = ref([
+interface languagesType {
+  code: string,
+  name: string
+}
+
+const languages = ref<languagesType[]>([
   { code: 'en', name: 'English' },
   { code: 'uk', name: 'Українська' },
   { code: 'ja', name: '日本語' }

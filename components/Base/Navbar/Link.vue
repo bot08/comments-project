@@ -26,11 +26,11 @@
 </template>
 
 
-<script setup>
+<script setup lang="ts">
 import { ChevronDownIcon } from '@heroicons/vue/24/solid'
 
-const isOpen = ref(false)
-const linkContainer = ref(null)
+const isOpen = ref<boolean>(false)
+const linkContainer = ref<null | object>(null)
 
 defineProps({
   item: {

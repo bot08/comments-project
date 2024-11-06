@@ -73,3 +73,50 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## API Endpoints
+
+## **Authentication**
+
+- **/api/auth/login**
+  - Body: `{ email, password }`
+
+- **/api/auth/register**
+  - Body: `{ name, email, password }`
+
+## **Users**
+
+- **/api/users**
+  - !auth, Query: `{ page, limit }`
+
+- **/api/users/{user_id}/update**
+  - !auth, Body: `{ name, role, isActive }`
+
+- **/api/users/me**
+  - !auth
+
+- **/api/users/me/update**
+  - !auth, Body: `{ name, email, password }`
+
+- **/api/users/me/sites**
+  - !auth, Query: `{ page, limit }`
+
+## **Sites**
+
+- **/api/sites**
+  - Query: `{ page, limit }`
+
+- **/api/sites/create**
+  - !auth, Body: `{ name, url }`
+
+- **/api/sites/{site_id}**
+  - !auth
+
+- **/api/sites/{site_id}/comments**
+  - Query: `{ page, limit, branch }`
+
+- **/api/sites/{site_id}/comments/create**
+  - !auth, Body: `{ name, content, branch }`
+
+- **/api/sites/{site_id}/comments/{comment_id}/delete**
+  - !auth

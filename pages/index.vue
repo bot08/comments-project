@@ -19,12 +19,12 @@
 </template>
 
 
-<script setup>
+<script setup lang="ts">
 const { t } = useI18n()
 
 useSeoMeta({
-  title: t('pages.index.title'),
-  description: t('pages.index.description'),
+  title: t('pages.index.title') as asting,
+  description: t('pages.index.description') as asting,
 })
 
 </script>

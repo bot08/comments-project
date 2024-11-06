@@ -41,10 +41,16 @@
 </template>
 
 
-<script setup>
+<script setup lang="ts">
 import { ComputerDesktopIcon, SunIcon, MoonIcon, HomeIcon, BookOpenIcon, RectangleGroupIcon } from '@heroicons/vue/24/solid'
 
-const navigation = [
+interface navLink {
+  name: string,
+  href: string,
+  icon: Component
+}
+
+const navigation: navLink[] = [
   { name: 'Home', href: '/', icon: HomeIcon },
   { name: 'Docs', href: '/docs', icon: BookOpenIcon },
   { name: 'Widget', href: '/widget', icon: RectangleGroupIcon },

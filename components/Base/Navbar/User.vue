@@ -14,7 +14,7 @@
 </template>
 
 
-<script setup>
+<script setup lang="ts">
 import { ArrowRightEndOnRectangleIcon, UserIcon } from '@heroicons/vue/24/solid'
 
 const authStore = useAuthStore()

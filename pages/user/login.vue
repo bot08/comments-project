@@ -24,13 +24,13 @@
 </template>
 
 
-<script setup>
+<script setup lang="ts">
 definePageMeta({
   middleware: 'guests-only'
 })
 
-const email = ref('')
-const password = ref('')
+const email = ref<string>('')
+const password = ref<string>('')
 const authStore = useAuthStore()
 const localePath = useLocalePath()
 

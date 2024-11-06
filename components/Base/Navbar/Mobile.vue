@@ -22,11 +22,11 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Bars4Icon } from '@heroicons/vue/24/solid'
 
-const isOpen = ref(false)
-const container = ref(null)
+const isOpen = ref<boolean>(false)
+const container = ref<null | object>(null)
 
 defineProps({
   items: {

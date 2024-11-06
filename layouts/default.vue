@@ -7,7 +7,7 @@
 </template>
 
 
-<script setup>
+<script setup lang="ts">
 const route = useRoute()
 const { t, locale } = useI18n()
 
@@ -21,13 +21,13 @@ useSeoMeta({
 })
 
 useHead({
-  titleTemplate: (title) => `${title} - ${t('base.sitename')}`,
-  title: () => route.meta.title,
+  titleTemplate: (title: string) => `${title} - ${t('base.sitename')}`,
+  title: () => route.meta.title as string,
   meta: [
     { name: 'theme-color', content: import.meta.client ? (() => useColorMode().value != 'dark' ? '#fff' : '#3f3f46') : '' }
   ],
   htmlAttrs: {
-    lang: locale.value
+    lang: locale.value as string
   },
   bodyAttrs: {
     class: 'min-h-dvh overflow-y-scroll bg-gray-200 dark:bg-neutral-900 transition-colors'

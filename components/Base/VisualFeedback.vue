@@ -34,9 +34,9 @@ interface computedStyleType {
   transition: string,
 }
 
-const computedStyle = computed<computedStyleType | undefined>(() => {
+const computedStyle = computed<computedStyleType | null>(() => {
   if (!originalWidth.value || !originalHeight.value) {
-    return undefined
+    return null
   }
 
   const scaleX = isActive.value ? (originalWidth.value - reductionPx) / originalWidth.value : 1

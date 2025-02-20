@@ -4,5 +4,5 @@
 
 
 <script setup lang="ts">
-const blurStore = useBlurStore();
+//const blurStore = useBlurStore();
 </script>
